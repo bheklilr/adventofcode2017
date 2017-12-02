@@ -1,7 +1,9 @@
 package edu.bheklilr;
 
+import java.util.*;
+
 public class Solution2 implements Solution {
-    private static final int[][] INPUT = new int[][] {
+    private static final int[][] PART1_INPUT = new int[][] {
             new int[] {62, 1649, 1731, 76, 51, 1295, 349, 719, 52, 1984, 2015, 2171, 981, 1809, 181, 1715},
             new int[] {161, 99, 1506, 1658, 84, 78, 533, 242, 1685, 86, 107, 1548, 670, 960, 1641, 610},
             new int[] {95, 2420, 2404, 2293, 542, 2107, 2198, 121, 109, 209, 2759, 1373, 1446, 905, 1837, 111},
@@ -20,17 +22,63 @@ public class Solution2 implements Solution {
             new int[] {94, 2312, 2397, 333, 1192, 106, 2713, 2351, 2650, 2663, 703, 157, 89, 510, 1824, 125}
     };
 
+    private static final int[][] PART2_INPUT = new int[][] {
+            new int[] {62, 1649, 1731, 76, 51, 1295, 349, 719, 52, 1984, 2015, 2171, 981, 1809, 181, 1715},
+            new int[] {161, 99, 1506, 1658, 84, 78, 533, 242, 1685, 86, 107, 1548, 670, 960, 1641, 610},
+            new int[] {95, 2420, 2404, 2293, 542, 2107, 2198, 121, 109, 209, 2759, 1373, 1446, 905, 1837, 111},
+            new int[] {552, 186, 751, 527, 696, 164, 114, 530, 558, 307, 252, 200, 481, 142, 205, 479},
+            new int[] {581, 1344, 994, 1413, 120, 112, 656, 1315, 1249, 193, 1411, 1280, 110, 103, 74, 1007},
+            new int[] {2536, 5252, 159, 179, 4701, 1264, 1400, 2313, 4237, 161, 142, 4336, 1061, 3987, 2268, 4669},
+            new int[] {3270, 1026, 381, 185, 293, 3520, 1705, 1610, 3302, 628, 3420, 524, 3172, 244, 295, 39},
+            new int[] {4142, 1835, 4137, 3821, 3730, 2094, 468, 141, 150, 3982, 147, 4271, 1741, 2039, 4410, 179},
+            new int[] {1796, 83, 2039, 1252, 84, 1641, 2165, 1218, 1936, 335, 1807, 2268, 66, 102, 1977, 2445},
+            new int[] {96, 65, 201, 275, 257, 282, 233, 60, 57, 200, 216, 134, 72, 105, 81, 212},
+            new int[] {3218, 5576, 5616, 5253, 178, 3317, 6147, 5973, 2424, 274, 4878, 234, 200, 4781, 5372, 276},
+            new int[] {4171, 2436, 134, 3705, 3831, 3952, 2603, 115, 660, 125, 610, 152, 4517, 587, 1554, 619},
+            new int[] {2970, 128, 2877, 1565, 1001, 167, 254, 2672, 59, 473, 2086, 181, 1305, 162, 1663, 2918},
+            new int[] {271, 348, 229, 278, 981, 1785, 2290, 516, 473, 2037, 737, 2291, 2521, 1494, 1121, 244},
+            new int[] {2208, 2236, 1451, 621, 1937, 1952, 865, 61, 1934, 49, 1510, 50, 1767, 59, 194, 1344},
+            new int[] {94, 2312, 2397, 333, 1192, 106, 2713, 2351, 2650, 2663, 703, 157, 89, 510, 1824, 125},
+
+    };
+
     @Override
     public void solve() {
+        System.out.println("Part 1: " + solve_part1());
+        System.out.println("Part 2: " + solve_part2());
+    }
+
+    private int solve_part2() {
         int checksum = 0;
-        for (int row = 0; row < INPUT.length; row++) {
+
+        for (int row = 0; row < PART2_INPUT.length; row++) {
+            int[] values = PART2_INPUT[row];
+            for (int i = 0; i < values.length; i++) {
+                for (int j = i+1; j < values.length; j++) {
+                    if (values[i] % values[j] == 0 | values[j] % values[i] == 0) {
+                        // Found it
+                        checksum += Integer.max(values[i], values[j]) / Integer.min(values[i], values[j]);
+                        // Exit, easier than breaking
+                        j = values.length;
+                        i = values.length;
+                    }
+                }
+            }
+        }
+
+        return checksum;
+    }
+
+    private int solve_part1() {
+        int checksum = 0;
+        for (int row = 0; row < PART1_INPUT.length; row++) {
             int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-            for (int col = 0; col < INPUT[row].length; col++) {
-                min = Integer.min(min, INPUT[row][col]);
-                max = Integer.max(max, INPUT[row][col]);
+            for (int col = 0; col < PART1_INPUT[row].length; col++) {
+                min = Integer.min(min, PART1_INPUT[row][col]);
+                max = Integer.max(max, PART1_INPUT[row][col]);
             }
             checksum += max - min;
         }
-        System.out.println(checksum);
+        return checksum;
     }
 }
