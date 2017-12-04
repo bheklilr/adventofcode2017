@@ -8,39 +8,26 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Solution4 implements Solution {
     private static final Path INPUT_PATH = Paths.get("inputs/04ms.txt");
 
     @Override
     public void solve() {
-        solvePart1();
-        solvePart2();
-    }
-
-    private void solvePart2() {
         try (BufferedReader br = new BufferedReader((new FileReader(INPUT_PATH.toFile())))) {
-            System.out.println(passphrasesWithNoAnagrams(passphrasesWithUniqueWords(br.lines())).count());
+            int part1 = 0, part2 = 0;
+            for (String line : (Iterable<String>) br.lines()::iterator) {
+                if (hasUniqueWords(line)) {
+                    part1++;
+                    if (hasNoAnagrams(line))
+                        part2++;
+                }
+            }
+            System.out.println("Part 1: " + part1);
+            System.out.println("Part 2: " + part2);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void solvePart1() {
-        try (BufferedReader br = new BufferedReader(new FileReader(INPUT_PATH.toFile()))) {
-            System.out.println(passphrasesWithUniqueWords(br.lines()).count());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Stream<String> passphrasesWithUniqueWords(Stream<String> passphrases) {
-        return passphrases.filter(this::hasUniqueWords);
-    }
-
-    private Stream<String> passphrasesWithNoAnagrams(Stream<String> passphrases) {
-        return passphrases.filter(this::hasNoAnagrams);
     }
 
     private boolean hasNoAnagrams(String passphrase) {
