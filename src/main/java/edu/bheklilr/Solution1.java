@@ -1,7 +1,5 @@
 package edu.bheklilr;
 
-import org.jetbrains.annotations.Contract;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -108,7 +106,6 @@ public class Solution1 implements Solution {
             8,4,8,4,1,3,9,2,5,4,4,4,6,3,4,1
     };
 
-    @Contract(pure = true)
     private int do_work_faster() {
         int sum = 0;
         int prev = INPUT_ARR[INPUT_ARR.length - 1];

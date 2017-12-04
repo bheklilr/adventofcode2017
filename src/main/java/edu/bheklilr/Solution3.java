@@ -1,7 +1,5 @@
 package edu.bheklilr;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BiFunction;
@@ -123,7 +121,6 @@ public class Solution3 implements Solution {
         return localSum;
     }
 
-    @NotNull
     private Set<Pair<Integer, Integer>> getAdjacentIdxs(int x, int y, BiFunction<Integer, Integer, Pair<Integer, Integer>> mkpair) {
         Set<Pair<Integer, Integer>> idxs = new HashSet<>();
         // This is about as much code as using 2 for loops
