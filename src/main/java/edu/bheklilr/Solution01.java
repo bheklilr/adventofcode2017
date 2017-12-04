@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Solution1 implements Solution {
+public class Solution01 implements Solution {
 
     public static void main(String[] args) {
         long iters = 10000;
-        Solution1 self = new Solution1();
+        Solution01 self = new Solution01();
         System.out.println(self.do_work());
         System.out.println(self.do_work_faster());
         long start = System.nanoTime();

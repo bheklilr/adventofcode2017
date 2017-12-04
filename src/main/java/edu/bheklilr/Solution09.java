@@ -1,6 +1,6 @@
 package edu.bheklilr;
 
-public class Solution6 implements Solution {
+public class Solution09 implements Solution {
     @Override
     public void solve() {
 

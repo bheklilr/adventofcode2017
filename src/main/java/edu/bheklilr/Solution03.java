@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class Solution3 implements Solution {
+public class Solution03 implements Solution {
 
     private static final int INPUT = 265149;
 

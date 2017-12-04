@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Solution4 implements Solution {
+public class Solution04 implements Solution {
     private static final Path INPUT_PATH = Paths.get("inputs/04ms.txt");
 
     @Override

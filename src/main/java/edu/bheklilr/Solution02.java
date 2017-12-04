@@ -1,8 +1,6 @@
 package edu.bheklilr;
 
-import java.util.*;
-
-public class Solution2 implements Solution {
+public class Solution02 implements Solution {
     private static final int[][] PART1_INPUT = new int[][] {
             new int[] {62, 1649, 1731, 76, 51, 1295, 349, 719, 52, 1984, 2015, 2171, 981, 1809, 181, 1715},
             new int[] {161, 99, 1506, 1658, 84, 78, 533, 242, 1685, 86, 107, 1548, 670, 960, 1641, 610},
