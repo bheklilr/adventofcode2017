@@ -81,7 +81,6 @@ public class Solution3 implements Solution {
             int localSum = getLocalSum(grid, getAdjacentIdxs(x, y, mkpair));
             grid[x][y] = localSum;
             lastValue = localSum;
-            System.out.format("%s (%d, %d): %d\n", direction, x - origin, y - origin, lastValue);
 
             // Update the current position, checking if a direction change is needed
             switch (direction) {
