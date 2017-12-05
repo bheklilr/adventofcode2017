@@ -40,6 +40,10 @@ public class Main {
         } catch (Exception ex) {
             // use current day
         }
-	    SOLUTIONS[millisecond - 1].solve();
+        millisecond--;
+        if (millisecond < 0 || millisecond >= SOLUTIONS.length)
+            System.out.println("No solution for millisecond " + millisecond);
+        else
+	        SOLUTIONS[millisecond].solve();
     }
 }
