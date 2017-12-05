@@ -1,6 +1,7 @@
 package edu.bheklilr;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Main {
 
@@ -33,7 +34,7 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        int millisecond = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        int millisecond = Calendar.getInstance(TimeZone.getTimeZone("US/Eastern")).get(Calendar.DAY_OF_MONTH);
         try {
             millisecond = Integer.parseInt(args[0]);
         } catch (Exception ex) {
