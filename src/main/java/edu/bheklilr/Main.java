@@ -23,20 +23,32 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int millisecond = Calendar.getInstance(TimeZone.getTimeZone("US/Eastern")).get(Calendar.DAY_OF_MONTH);
+        int day = Calendar.getInstance(TimeZone.getTimeZone("US/Eastern")).get(Calendar.DAY_OF_MONTH);
         try {
-            millisecond = Integer.parseInt(args[0]);
+            day = Integer.parseInt(args[0]);
         } catch (Exception ex) {
-            // use current day
+            // pass
         }
-        millisecond--;
-        if (SOLUTIONS.containsKey(millisecond)) {
-            Solution s = SOLUTIONS.get(millisecond);
-            System.out.format("Solution for %dms\n", millisecond + 1);
-            System.out.println("  Part 1: " + s.solvePart1().toString());
-            System.out.println("  Part 2: " + s.solvePart2().toString());
+        List<Integer> daysToRun = new ArrayList<>();
+        if (day <= 0) {
+            Object[] keys = SOLUTIONS.keySet().toArray();
+            Arrays.sort(keys);
+            for (Object key : keys) {
+                daysToRun.add((Integer) key);
+            }
         } else {
-            System.out.println("No solution for millisecond " + (millisecond + 1));
+            daysToRun.add(day);
+        }
+
+        for (int dayToRun : daysToRun) {
+            if (SOLUTIONS.containsKey(dayToRun)) {
+                Solution s = SOLUTIONS.get(dayToRun);
+                System.out.format("Solution for day %d\n", dayToRun);
+                System.out.println("  Part 1: " + s.solvePart1().toString());
+                System.out.println("  Part 2: " + s.solvePart2().toString());
+            } else {
+                System.out.println("No solution for day " + dayToRun);
+            }
         }
     }
 }
