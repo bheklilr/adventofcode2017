@@ -1,7 +1,18 @@
 # Advent of Code 2017
 
-This is where I am participating in [Advent of Code](http://adventofcode.com).
-I will be using Java since I am trying to learn Java better.
+These are my solutions to [Advent of Code](http://adventofcode.com), written in Java.
+
+To run the solutions, the easiest way is to use maven:
+
+    mvn package exec:java
+
+This will run the current day's challenge.  To run a specific challenge, just pass the number as an argument:
+
+    mvn package exec:java -Dexec.args="${DAY}"
+
+Alternatively, all solutions can be run by passing a non-positive number as the day:
+
+    mvn package exec:java -Dexec.args="-1"
 
 ## Solutions
 
