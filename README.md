@@ -1,8 +1,18 @@
-# adventofcode2017
+# Advent of Code 2017
 
 This is where I am participating in [Advent of Code](http://adventofcode.com).
 I will be using Java since I am trying to learn Java better.
 
+## Solutions
+
+- [x] [Day 1](#day-1)
+- [x] [Day 2](#day-2)
+- [x] [Day 3](#day-3)
+- [x] [Day 4](#day-4)
+- [x] [Day 5](#day-5)
+- [x] [Day 6](#day-6)
+- [ ] [Day 7](#day-7)
+  
 ## Day 1
 
 ### Part 1
