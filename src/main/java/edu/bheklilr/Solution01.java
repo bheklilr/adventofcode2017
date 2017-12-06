@@ -9,7 +9,7 @@ public class Solution01 implements Solution {
     public static void main(String[] args) {
         long iters = 10000;
         Solution01 self = new Solution01();
-        System.out.println(self.do_work());
+        System.out.println(self.solvePart1());
         System.out.println(self.do_work_faster());
         long start = System.nanoTime();
         for (int i = 0; i < iters; i++) {
@@ -118,7 +118,7 @@ public class Solution01 implements Solution {
         return sum;
     }
 
-    private int do_work() {
+    private int solvePart1() {
         List<Integer> parsed = Arrays.stream(INPUT.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -135,6 +135,19 @@ public class Solution01 implements Solution {
 
     @Override
     public void solve() {
-        System.out.println("Solution 1: " + do_work());
+        System.out.println("Part 1: " + solvePart1());
+        System.out.println("Part 2: " + solvePart2());
+    }
+
+    private int solvePart2() {
+        int sum = 0;
+        final int size = INPUT_ARR.length;
+        final int halfsize = size / 2;
+        for (int i = 0; i < size; i++) {
+            if (INPUT_ARR[i] == INPUT_ARR[(i + halfsize) % size]) {
+                sum += INPUT_ARR[i];
+            }
+        }
+        return sum;
     }
 }
