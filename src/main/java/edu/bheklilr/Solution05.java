@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Solution05 implements Solution {
+public class Solution05 implements Solution<Long> {
     private static final Path INPUT_PATH = Paths.get("inputs/05ms.txt");
 
     private static int[] getInput() {
@@ -25,13 +25,7 @@ public class Solution05 implements Solution {
         }
     }
 
-    @Override
-    public void solve() {
-        System.out.println("Part 1: " + solvePart1());
-        System.out.println("Part 2: " + solvePart2());
-    }
-
-    private long solvePart1() {
+    public Long solvePart1() {
         long steps = 0;
         int position = 0;
         int[] input = getInput();
@@ -44,7 +38,7 @@ public class Solution05 implements Solution {
         return steps;
     }
 
-    private long solvePart2() {
+    public Long solvePart2() {
         long steps = 0;
         int position = 0;
         int[] input = getInput();

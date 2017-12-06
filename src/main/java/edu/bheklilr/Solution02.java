@@ -1,6 +1,6 @@
 package edu.bheklilr;
 
-public class Solution02 implements Solution {
+public class Solution02 implements Solution<Long> {
     private static final int[][] PART1_INPUT = new int[][] {
             new int[] {62, 1649, 1731, 76, 51, 1295, 349, 719, 52, 1984, 2015, 2171, 981, 1809, 181, 1715},
             new int[] {161, 99, 1506, 1658, 84, 78, 533, 242, 1685, 86, 107, 1548, 670, 960, 1641, 610},
@@ -40,14 +40,8 @@ public class Solution02 implements Solution {
 
     };
 
-    @Override
-    public void solve() {
-        System.out.println("Part 1: " + solve_part1());
-        System.out.println("Part 2: " + solve_part2());
-    }
-
-    private int solve_part2() {
-        int checksum = 0;
+    public Long solvePart2() {
+        long checksum = 0;
 
         for (int row = 0; row < PART2_INPUT.length; row++) {
             int[] values = PART2_INPUT[row];
@@ -67,8 +61,8 @@ public class Solution02 implements Solution {
         return checksum;
     }
 
-    private int solve_part1() {
-        int checksum = 0;
+    public Long solvePart1() {
+        long checksum = 0;
         for (int row = 0; row < PART1_INPUT.length; row++) {
             int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
             for (int col = 0; col < PART1_INPUT[row].length; col++) {

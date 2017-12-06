@@ -9,13 +9,29 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Solution04 implements Solution {
+public class Solution04 implements Solution<Integer> {
     private static final Path INPUT_PATH = Paths.get("inputs/04ms.txt");
 
+    private int part1 = 0;
+    private int part2 = 0;
+    private boolean hasBeenSolved = false;
+
     @Override
-    public void solve() {
+    public Integer solvePart1() {
+        if (!hasBeenSolved)
+            solve();
+        return part1;
+    }
+
+    @Override
+    public Integer solvePart2() {
+        if (!hasBeenSolved)
+            solve();
+        return part2;
+    }
+
+    private void solve() {
         try (BufferedReader br = new BufferedReader((new FileReader(INPUT_PATH.toFile())))) {
-            int part1 = 0, part2 = 0;
             for (String line : (Iterable<String>) br.lines()::iterator) {
                 if (hasUniqueWords(line)) {
                     part1++;
@@ -23,8 +39,7 @@ public class Solution04 implements Solution {
                         part2++;
                 }
             }
-            System.out.println("Part 1: " + part1);
-            System.out.println("Part 2: " + part2);
+            hasBeenSolved = true;
         } catch (IOException e) {
             e.printStackTrace();
         }

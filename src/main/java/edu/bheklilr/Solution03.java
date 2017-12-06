@@ -5,15 +5,9 @@ import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class Solution03 implements Solution {
+public class Solution03 implements Solution<Integer> {
 
     private static final int INPUT = 265149;
-
-    @Override
-    public void solve() {
-        System.out.println("Part 1: " + solvePart1());
-        System.out.println("Part 2: " + solvePart2());
-    }
 
     private class Pair<L, R> {
         private final L left;
@@ -45,7 +39,8 @@ public class Solution03 implements Solution {
         }
     }
 
-    private int solvePart2() {
+    @Override
+    public Integer solvePart2() {
         int _sideLength = (int) Math.ceil(Math.sqrt((double) INPUT));
         if (_sideLength % 2 == 0) {
             _sideLength++;
@@ -135,7 +130,8 @@ public class Solution03 implements Solution {
         return idxs;
     }
 
-    private int solvePart1() {
+    @Override
+    public Integer solvePart1() {
         // As the square grows, the number in the bottom right corner will always be a square number equal
         // to the side length squared.  This greatly constrains where our number will be
         int sideLength = (int) Math.ceil(Math.sqrt((double) INPUT));

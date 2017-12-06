@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Solution01 implements Solution {
+public class Solution01 implements Solution<Integer> {
 
     public static void main(String[] args) {
         long iters = 10000;
@@ -118,7 +118,8 @@ public class Solution01 implements Solution {
         return sum;
     }
 
-    private int solvePart1() {
+    @Override
+    public Integer solvePart1() {
         List<Integer> parsed = Arrays.stream(INPUT.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -134,12 +135,7 @@ public class Solution01 implements Solution {
     }
 
     @Override
-    public void solve() {
-        System.out.println("Part 1: " + solvePart1());
-        System.out.println("Part 2: " + solvePart2());
-    }
-
-    private int solvePart2() {
+    public Integer solvePart2() {
         int sum = 0;
         final int size = INPUT_ARR.length;
         final int halfsize = size / 2;

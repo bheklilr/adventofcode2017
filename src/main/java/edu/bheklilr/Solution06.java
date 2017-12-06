@@ -10,8 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Solution06 implements Solution {
+public class Solution06 implements Solution<Integer> {
     private static final Path INPUT_PATH = Paths.get("inputs/06ms.txt");
+
+    private List<Bank> banks;
 
     private Bank getInput() {
         try (BufferedReader br = Files.newBufferedReader(INPUT_PATH)) {
@@ -24,32 +26,29 @@ public class Solution06 implements Solution {
             return new Bank(new ArrayList<>());
         }
     }
+
     @Override
-    public void solve() {
-        solvePart2(solvePart1());
-    }
-
-    private void solvePart2(List<Bank> banks) {
+    public Integer solvePart2() {
         Bank bankSeen = banks.get(banks.size() - 1);
-        System.out.println("Part 2: " + (banks.lastIndexOf(bankSeen) - banks.indexOf(bankSeen)));
+        return banks.lastIndexOf(bankSeen) - banks.indexOf(bankSeen);
     }
 
-    private List<Bank> solvePart1() {
+    @Override
+    public Integer solvePart1() {
         Bank bank = getInput();
-        List<Bank> seen = new ArrayList<>();
+        banks = new ArrayList<>();
 
         int iterations = 0;
-        while (!seen.contains(bank)) {
-            seen.add(bank);
+        while (!banks.contains(bank)) {
+            banks.add(bank);
             bank = bank.redistribute();
 
             iterations += 1;
             if (iterations > 100000)
                 break;
         }
-        seen.add(bank);
-        System.out.println("Part 1: " + iterations);
-        return seen;
+        banks.add(bank);
+        return iterations;
     }
 
     private class Bank {
