@@ -22,7 +22,7 @@ Alternatively, all solutions can be run by passing a non-positive number as the 
 - [x] [Day 4](#day-4)
 - [x] [Day 5](#day-5)
 - [x] [Day 6](#day-6)
-- [ ] [Day 7](#day-7)
+- [x] [Day 7](#day-7)
   
 ## Day 1
 
@@ -138,4 +138,18 @@ How many cycles are in the infinite loop that arises from the configuration in y
 
 ### Part 1
 
+Wandering further through the circuits of the computer, you come upon a tower of programs that have gotten themselves into a bit of trouble. A recursive algorithm has gotten out of hand, and now they're balanced precariously in a large tower.
+
+One program at the bottom supports the entire tower. It's holding a large disc, and on the disc are balanced several more sub-towers. At the bottom of these sub-towers, standing on the bottom disc, are other programs, each holding their own disc, and so on. At the very tops of these sub-sub-sub-...-towers, many programs stand simply keeping the disc below them balanced but with no disc of their own.
+
+You offer to help, but first you need to understand the structure of these towers. You ask each program to yell out their name, their weight, and (if they're holding a disc) the names of the programs immediately above them balancing on that disc. You write this information down (your puzzle input). Unfortunately, in their panic, they don't do this in an orderly fashion; by the time you're done, you're not sure which program gave which information.
+
+Before you're ready to help them, you need to make sure your information is correct. What is the name of the bottom program?
+
 ### Part 2
+
+The programs explain the situation: they can't get down. Rather, they could get down, if they weren't expending all of their energy trying to keep the tower balanced. Apparently, one program has the wrong weight, and until it's fixed, they're stuck here.
+
+For any program holding a disc, each program standing on that disc forms a sub-tower. Each of those sub-towers are supposed to be the same weight, or the disc itself isn't balanced. The weight of a tower is the sum of the weights of the programs in that tower.
+
+[Solved](src/main/java/edu/bheklilr/Solution07.java)
