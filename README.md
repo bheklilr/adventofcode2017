@@ -23,6 +23,7 @@ Alternatively, all solutions can be run by passing a non-positive number as the 
 - [x] [Day 5](#day-5)
 - [x] [Day 6](#day-6)
 - [x] [Day 7](#day-7)
+- [ ] [Day 8](#day-8)
   
 ## Day 1
 
@@ -153,3 +154,9 @@ The programs explain the situation: they can't get down. Rather, they could get 
 For any program holding a disc, each program standing on that disc forms a sub-tower. Each of those sub-towers are supposed to be the same weight, or the disc itself isn't balanced. The weight of a tower is the sum of the weights of the programs in that tower.
 
 [Solved](src/main/java/edu/bheklilr/Solution07.java)
+
+## Day 8
+
+### Part 1
+
+### Part 2
