@@ -5,38 +5,23 @@ import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class Solution03 implements Solution<Integer> {
+public class Solution03 extends Solution<Integer> {
 
     private static final int INPUT = 265149;
 
-    private class Pair<L, R> {
-        private final L left;
-        private final R right;
-
-        public Pair(L left, R right) {
-            this.left = left;
-            this.right = right;
-        }
-
-        public L getLeft() {
-            return left;
-        }
-
-        public R getRight() {
-            return right;
-        }
-
-        @Override
-        public int hashCode() {
-            return left.hashCode() ^ right.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (!(o instanceof Pair)) return false;
-            Pair other = (Pair) o;
-            return getLeft() == other.getLeft() && getRight() == other.getRight();
-        }
+    @SuppressWarnings("PointlessArithmeticExpression")
+    private Set<Pair<Integer, Integer>> getAdjacentIdxs(int x, int y, BiFunction<Integer, Integer, Pair<Integer, Integer>> mkpair) {
+        Set<Pair<Integer, Integer>> idxs = new HashSet<>();
+        // This is about as much code as using 2 for loops
+        idxs.add(mkpair.apply(x - 1, y - 1));
+        idxs.add(mkpair.apply(x + 0, y - 1));
+        idxs.add(mkpair.apply(x + 1, y - 1));
+        idxs.add(mkpair.apply(x - 1, y + 0));
+        idxs.add(mkpair.apply(x + 1, y + 0));
+        idxs.add(mkpair.apply(x - 1, y + 1));
+        idxs.add(mkpair.apply(x + 0, y + 1));
+        idxs.add(mkpair.apply(x + 1, y + 1));
+        return idxs;
     }
 
     @Override
@@ -116,18 +101,34 @@ public class Solution03 implements Solution<Integer> {
         return localSum;
     }
 
-    private Set<Pair<Integer, Integer>> getAdjacentIdxs(int x, int y, BiFunction<Integer, Integer, Pair<Integer, Integer>> mkpair) {
-        Set<Pair<Integer, Integer>> idxs = new HashSet<>();
-        // This is about as much code as using 2 for loops
-        idxs.add(mkpair.apply(x - 1, y - 1));
-        idxs.add(mkpair.apply(x + 0, y - 1));
-        idxs.add(mkpair.apply(x + 1, y - 1));
-        idxs.add(mkpair.apply(x - 1, y + 0));
-        idxs.add(mkpair.apply(x + 1, y + 0));
-        idxs.add(mkpair.apply(x - 1, y + 1));
-        idxs.add(mkpair.apply(x + 0, y + 1));
-        idxs.add(mkpair.apply(x + 1, y + 1));
-        return idxs;
+    private class Pair<L, R> {
+        private final L left;
+        private final R right;
+
+        Pair(L left, R right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        L getLeft() {
+            return left;
+        }
+
+        R getRight() {
+            return right;
+        }
+
+        @Override
+        public int hashCode() {
+            return left.hashCode() ^ right.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Pair)) return false;
+            Pair other = (Pair) o;
+            return getLeft() == other.getLeft() && getRight() == other.getRight();
+        }
     }
 
     @Override

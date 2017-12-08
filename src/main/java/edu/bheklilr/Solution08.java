@@ -1,6 +1,7 @@
 package edu.bheklilr;
 
-public class Solution08 implements Solution {
+public class Solution08 extends Solution {
+
     @Override
     public Object solvePart1() {
         return null;

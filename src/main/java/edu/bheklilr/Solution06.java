@@ -1,30 +1,20 @@
 package edu.bheklilr;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Solution06 implements Solution<Integer> {
-    private static final Path INPUT_PATH = Paths.get("inputs/06ms.txt");
-
+public class Solution06 extends Solution<Integer> {
     private List<Bank> banks;
 
     private Bank getInput() {
-        try (BufferedReader br = Files.newBufferedReader(INPUT_PATH)) {
-            return new Bank(
-                    Arrays.stream(br.readLine().split("\t"))
-                            .map(Integer::parseInt)
-                            .collect(Collectors.toList()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new Bank(new ArrayList<>());
-        }
+        return new Bank(Arrays.stream(
+                getInputLines("06ms").findFirst().orElse("")
+                        .split("\t"))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList()));
     }
 
     @Override
@@ -54,7 +44,7 @@ public class Solution06 implements Solution<Integer> {
     private class Bank {
         private List<Integer> values;
 
-        public Bank(List<Integer> vals) {
+        Bank(List<Integer> vals) {
             values = vals;
         }
 
@@ -68,14 +58,14 @@ public class Solution06 implements Solution<Integer> {
                 return false;
 
             for (int i = 0; i < this.values.size(); i++) {
-                if (this.values.get(i) != other.values.get(i))
+                if (!Objects.equals(this.values.get(i), other.values.get(i)))
                     return false;
             }
             return true;
         }
 
-        public Bank redistribute() {
-            List<Integer> bank = new ArrayList(values);
+        Bank redistribute() {
+            List<Integer> bank = new ArrayList<>(values);
             // Find the max
             int idxOfMax = 0;
             int maximum = 0;

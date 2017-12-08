@@ -1,6 +1,6 @@
 package edu.bheklilr;
 
-public class Solution02 implements Solution<Long> {
+public class Solution02 extends Solution<Long> {
     private static final int[][] PART1_INPUT = new int[][] {
             new int[] {62, 1649, 1731, 76, 51, 1295, 349, 719, 52, 1984, 2015, 2171, 981, 1809, 181, 1715},
             new int[] {161, 99, 1506, 1658, 84, 78, 533, 242, 1685, 86, 107, 1548, 670, 960, 1641, 610},
@@ -43,10 +43,9 @@ public class Solution02 implements Solution<Long> {
     public Long solvePart2() {
         long checksum = 0;
 
-        for (int row = 0; row < PART2_INPUT.length; row++) {
-            int[] values = PART2_INPUT[row];
+        for (int[] values : PART2_INPUT) {
             for (int i = 0; i < values.length; i++) {
-                for (int j = i+1; j < values.length; j++) {
+                for (int j = i + 1; j < values.length; j++) {
                     if (values[i] % values[j] == 0 | values[j] % values[i] == 0) {
                         // Found it
                         checksum += Integer.max(values[i], values[j]) / Integer.min(values[i], values[j]);
@@ -63,11 +62,11 @@ public class Solution02 implements Solution<Long> {
 
     public Long solvePart1() {
         long checksum = 0;
-        for (int row = 0; row < PART1_INPUT.length; row++) {
+        for (int[] row : PART1_INPUT) {
             int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-            for (int col = 0; col < PART1_INPUT[row].length; col++) {
-                min = Integer.min(min, PART1_INPUT[row][col]);
-                max = Integer.max(max, PART1_INPUT[row][col]);
+            for (int colValue : row) {
+                min = Integer.min(min, colValue);
+                max = Integer.max(max, colValue);
             }
             checksum += max - min;
         }

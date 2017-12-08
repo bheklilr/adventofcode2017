@@ -1,17 +1,10 @@
 package edu.bheklilr;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Solution04 implements Solution<Integer> {
-    private static final Path INPUT_PATH = Paths.get("inputs/04ms.txt");
-
+public class Solution04 extends Solution<Integer> {
     private int part1 = 0;
     private int part2 = 0;
     private boolean hasBeenSolved = false;
@@ -31,18 +24,14 @@ public class Solution04 implements Solution<Integer> {
     }
 
     private void solve() {
-        try (BufferedReader br = new BufferedReader((new FileReader(INPUT_PATH.toFile())))) {
-            for (String line : (Iterable<String>) br.lines()::iterator) {
-                if (hasUniqueWords(line)) {
-                    part1++;
-                    if (hasNoAnagrams(line))
-                        part2++;
-                }
+        for (String line : (Iterable<String>) getInputLines("04ms")::iterator) {
+            if (hasUniqueWords(line)) {
+                part1++;
+                if (hasNoAnagrams(line))
+                    part2++;
             }
-            hasBeenSolved = true;
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        hasBeenSolved = true;
     }
 
     private boolean hasNoAnagrams(String passphrase) {

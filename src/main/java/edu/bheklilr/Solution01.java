@@ -2,9 +2,10 @@ package edu.bheklilr;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Solution01 implements Solution<Integer> {
+public class Solution01 extends Solution<Integer> {
 
     public static void main(String[] args) {
         long iters = 10000;
@@ -13,6 +14,7 @@ public class Solution01 implements Solution<Integer> {
         System.out.println(self.do_work_faster());
         long start = System.nanoTime();
         for (int i = 0; i < iters; i++) {
+            //noinspection ResultOfMethodCallIgnored
             self.do_work_faster();
         }
         long stop = System.nanoTime();
@@ -109,11 +111,11 @@ public class Solution01 implements Solution<Integer> {
     private int do_work_faster() {
         int sum = 0;
         int prev = INPUT_ARR[INPUT_ARR.length - 1];
-        for (int i = 0; i < INPUT_ARR.length; i++) {
-            if (prev == INPUT_ARR[i]) {
+        for (int current : INPUT_ARR) {
+            if (prev == current) {
                 sum += prev;
             }
-            prev = INPUT_ARR[i];
+            prev = current;
         }
         return sum;
     }
@@ -127,7 +129,7 @@ public class Solution01 implements Solution<Integer> {
 
         int sum = 0;
         for (int i = 0; i < parsed.size() - 1; i++) {
-            if (parsed.get(i) == parsed.get(i + 1)) {
+            if (Objects.equals(parsed.get(i), parsed.get(i + 1))) {
                 sum += parsed.get(i);
             }
         }

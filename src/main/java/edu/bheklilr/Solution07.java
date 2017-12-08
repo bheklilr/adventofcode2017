@@ -2,24 +2,14 @@ package edu.bheklilr;
 
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Solution07 implements Solution<String> {
-    private static Path INPUT_PATH = Paths.get("inputs/07ms.txt");
-
+public class Solution07 extends Solution<String> {
     private static List<Entry> getEntries() {
-        try (BufferedReader br = new BufferedReader(Files.newBufferedReader(INPUT_PATH))) {
-            return br.lines().map(Entry::parseLine).collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
+        return getInputLines("07ms")
+                .map(Entry::parseLine)
+                .collect(Collectors.toList());
     }
 
     private static Tower findUnbalancingTower(Tower node) {
@@ -81,17 +71,17 @@ public class Solution07 implements Solution<String> {
     }
 
     static class Entry {
-        public final String name;
-        public final Integer weight;
-        public final List<String> children;
+        final String name;
+        final Integer weight;
+        final List<String> children;
 
-        public Entry(String name, Integer weight, List<String> children) {
+        Entry(String name, Integer weight, List<String> children) {
             this.name = name;
             this.weight = weight;
             this.children = children;
         }
 
-        public static Entry parseLine(String line) {
+        static Entry parseLine(String line) {
             String name;
             Integer weight;
             List<String> children = new ArrayList<>();
@@ -113,7 +103,7 @@ public class Solution07 implements Solution<String> {
         private Integer weight;
         private List<Tower> children;
 
-        public Tower(String name, Integer weight) {
+        Tower(String name, Integer weight) {
             this.name = name;
             this.weight = weight;
             this.children = new ArrayList<>();
@@ -134,11 +124,11 @@ public class Solution07 implements Solution<String> {
             }
         }
 
-        public String getName() {
+        String getName() {
             return name;
         }
 
-        public Integer getWeight() {
+        Integer getWeight() {
             return weight;
         }
 
@@ -146,24 +136,24 @@ public class Solution07 implements Solution<String> {
             this.weight = weight;
         }
 
-        public List<Tower> getChildren() {
+        List<Tower> getChildren() {
             return children;
         }
 
-        public void addChild(Tower child) {
+        void addChild(Tower child) {
             this.children.add(child);
         }
 
-        public Integer getTotalWeight() {
+        Integer getTotalWeight() {
             return getChildrenTotalWeights().stream().reduce(getWeight(), (x, y) -> x + y);
         }
 
-        public List<Integer> getChildrenTotalWeights() {
-            return getChildren().stream().map(t -> t.getTotalWeight()).collect(Collectors.toList());
+        List<Integer> getChildrenTotalWeights() {
+            return getChildren().stream().map(Tower::getTotalWeight).collect(Collectors.toList());
         }
 
-        public boolean isBalanced() {
-            return (new HashSet<Integer>(getChildrenTotalWeights())).size() < 2;
+        boolean isBalanced() {
+            return (new HashSet<>(getChildrenTotalWeights())).size() < 2;
         }
 
         @Override

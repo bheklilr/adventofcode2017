@@ -1,28 +1,18 @@
 package edu.bheklilr;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Solution05 implements Solution<Long> {
-    private static final Path INPUT_PATH = Paths.get("inputs/05ms.txt");
-
+public class Solution05 extends Solution<Long> {
     private static int[] getInput() {
-        try (BufferedReader br = Files.newBufferedReader(INPUT_PATH)) {
-            List<Integer> list = br.lines().map(Integer::parseInt).collect(Collectors.toList());
-            int[] input = new int[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                input[i] = list.get(i);
-            }
-            return input;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new int[0];
+        List<Integer> list = getInputLines("05ms")
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        int[] input = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            input[i] = list.get(i);
         }
+        return input;
     }
 
     public Long solvePart1() {
