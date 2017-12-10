@@ -28,8 +28,7 @@ public class Solution10 extends Solution<Integer> {
         int skip = 0;
 
         for (int length : INPUT) {
-            List<Integer> selection = new ArrayList<>();
-            selection.addAll(list.subList(position, position + length));
+            List<Integer> selection = new ArrayList<>(list.subList(position, position + length));
             Collections.reverse(selection);
             for (int i = 0; i < length; i++) {
                 list.set(i + position, selection.get(i));
@@ -47,8 +46,8 @@ public class Solution10 extends Solution<Integer> {
 
         List<Integer> lengths = new ArrayList<>();
         final byte[] input = "165,1,255,31,87,52,24,113,0,91,148,254,158,2,73,153".getBytes();
-        for (int i = 0; i < input.length; i++) {
-            lengths.add((int) input[i]);
+        for (byte anInput : input) {
+            lengths.add((int) anInput);
         }
         lengths.addAll(Arrays.asList(17, 31, 73, 47, 23));
 
@@ -59,8 +58,7 @@ public class Solution10 extends Solution<Integer> {
 
         for (int round = 0; round < rounds; round++) {
             for (int length : lengths) {
-                List<Integer> selection = new ArrayList<>();
-                selection.addAll(list.subList(position, position + length));
+                List<Integer> selection = new ArrayList<>(list.subList(position, position + length));
                 Collections.reverse(selection);
                 for (int i = 0; i < length; i++) {
                     list.set(i + position, selection.get(i));
