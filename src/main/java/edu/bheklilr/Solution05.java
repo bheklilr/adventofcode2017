@@ -3,7 +3,7 @@ package edu.bheklilr;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Solution05 extends Solution<Long> {
+class Solution05 extends Solution<Long> {
     private static int[] getInput() {
         List<Integer> list = getInputLines("05ms")
                 .map(Integer::parseInt)

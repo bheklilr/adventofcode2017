@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Solution09 extends Solution<Long> {
+class Solution09 extends Solution<Long> {
 
 
     @Override
@@ -63,7 +63,8 @@ public class Solution09 extends Solution<Long> {
             char b;
             while (stream.available() > 0) {
                 b = (char) stream.read();
-                if (b == '!') stream.read();
+                if (b == '!') //noinspection ResultOfMethodCallIgnored
+                    stream.read();
                 else if (inGarbage && b != '>') garbageChars++;
                 else if (b == '<') inGarbage = true;
                 else if (b == '>') inGarbage = false;

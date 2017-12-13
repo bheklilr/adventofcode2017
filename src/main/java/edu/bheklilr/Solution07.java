@@ -5,7 +5,7 @@ import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Solution07 extends Solution<String> {
+class Solution07 extends Solution<String> {
     private static List<Entry> getEntries() {
         return getInputLines("07ms")
                 .map(Entry::parseLine)
@@ -25,7 +25,7 @@ public class Solution07 extends Solution<String> {
     }
 
     @Override
-    public String solvePart1() {
+    String solvePart1() {
         List<Entry> entries = getEntries();
         Map<String, Boolean> hasParent = new HashMap<>();
         for (Entry entry : entries) {
@@ -99,9 +99,9 @@ public class Solution07 extends Solution<String> {
     }
 
     static class Tower {
-        private String name;
+        private final String name;
         private Integer weight;
-        private List<Tower> children;
+        private final List<Tower> children;
 
         Tower(String name, Integer weight) {
             this.name = name;

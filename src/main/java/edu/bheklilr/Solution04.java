@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Solution04 extends Solution<Integer> {
+class Solution04 extends Solution<Integer> {
     private int part1 = 0;
     private int part2 = 0;
     private boolean hasBeenSolved = false;

@@ -4,7 +4,7 @@ import org.reflections.Reflections;
 
 import java.util.*;
 
-public class Main {
+class Main {
 
     private static final Map<Integer, Solution> SOLUTIONS;
 

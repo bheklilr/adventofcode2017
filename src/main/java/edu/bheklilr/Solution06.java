@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Solution06 extends Solution<Integer> {
+class Solution06 extends Solution<Integer> {
     private List<Bank> banks;
 
     private Bank getInput() {
@@ -42,7 +42,7 @@ public class Solution06 extends Solution<Integer> {
     }
 
     private class Bank {
-        private List<Integer> values;
+        private final List<Integer> values;
 
         Bank(List<Integer> vals) {
             values = vals;

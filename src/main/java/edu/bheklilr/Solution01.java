@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Solution01 extends Solution<Integer> {
+class Solution01 extends Solution<Integer> {
 
     public static void main(String[] args) {
         long iters = 10000;
@@ -121,7 +121,7 @@ public class Solution01 extends Solution<Integer> {
     }
 
     @Override
-    public Integer solvePart1() {
+    Integer solvePart1() {
         List<Integer> parsed = Arrays.stream(INPUT.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());

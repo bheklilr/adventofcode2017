@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public abstract class Solution<T> {
+abstract class Solution<T> {
     static Stream<String> getInputLines(String name) {
         Path inputPath = Paths.get("inputs/" + name + ".txt");
         try (BufferedReader br = new BufferedReader(Files.newBufferedReader(inputPath))) {

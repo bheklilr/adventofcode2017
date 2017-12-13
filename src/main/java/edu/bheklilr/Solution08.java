@@ -106,12 +106,12 @@ public class Solution08 extends Solution<Integer> {
     }
 
     static class Instruction {
-        private String operand;
-        private boolean increase;
-        private Integer amount;
-        private String conditionalRegister;
-        private Comparison conditionalComparison;
-        private Integer conditionalAmount;
+        private final String operand;
+        private final boolean increase;
+        private final Integer amount;
+        private final String conditionalRegister;
+        private final Comparison conditionalComparison;
+        private final Integer conditionalAmount;
 
         Instruction(
                 String operand,

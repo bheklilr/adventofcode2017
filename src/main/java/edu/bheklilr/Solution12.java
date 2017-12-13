@@ -3,14 +3,15 @@ package edu.bheklilr;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Solution12 extends Solution<Integer> {
+@SuppressWarnings("unused")
+class Solution12 extends Solution<Integer> {
 
-    static Set<Integer> findConnected(Integer to, int[][] graph) {
+    private static Set<Integer> findConnected(Integer to, int[][] graph) {
         Set<Integer> connected = new HashSet<>();
         return findConnected(to, graph, connected);
     }
 
-    static Set<Integer> findConnected(Integer to, int[][] graph, Set<Integer> connected) {
+    private static Set<Integer> findConnected(Integer to, int[][] graph, Set<Integer> connected) {
         for (int i = 0; i < graph[to].length; i++) {
             if (graph[to][i] == 1) {
                 List<Integer> scanNext = new ArrayList<>();
@@ -25,11 +26,11 @@ public class Solution12 extends Solution<Integer> {
         return connected;
     }
 
-    static int connectedNodes(Integer to, int[][] graph) {
+    private static int connectedNodes(Integer to, int[][] graph) {
         return findConnected(to, graph).size();
     }
 
-    Map<Integer, List<Integer>> getInputAssociations() {
+    private Map<Integer, List<Integer>> getInputAssociations() {
         return getInputLines("12ms")
                 .collect(Collectors.toMap(
                         line -> Integer.parseInt(line.split(" <-> ")[0]),
@@ -43,7 +44,7 @@ public class Solution12 extends Solution<Integer> {
                 ));
     }
 
-    int[][] getInputGraph() {
+    private int[][] getInputGraph() {
         Map<Integer, List<Integer>> assocs = getInputAssociations();
         int maxSize = Collections.max(assocs.keySet()) + 1;
         int[][] graph = new int[maxSize][maxSize];
